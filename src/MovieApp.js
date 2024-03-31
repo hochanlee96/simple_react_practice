@@ -12,8 +12,29 @@ function MovieApp() {
   };
 
   useEffect(() => {}, []);
-  console.log(movies);
-  return <div>{loading ? <h1>Loading...</h1> : null}</div>;
+  getMovies();
+  return (
+    <div>
+      {loading ? (
+        <h1>Loading...</h1>
+      ) : (
+        <div>
+          {movies.map((movie) => (
+            <div key={movie.id}>
+              <img src={movie.medium_cover_image} alt="" />
+              <h2>{movie.title}</h2>
+              <p>{movie.summary}</p>
+              <ul>
+                {movie.genres.map((genre) => (
+                  <li key={genre}>{genre}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default MovieApp;
