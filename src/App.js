@@ -1,14 +1,14 @@
-import {useState} from "react";
-import Todo from "./Todo.js";
-import CoinTracker from "./CoinTracker.js";
-import MovieApp from "./MovieApp.js";
+// import {useState} from "react";
+// import Todo from "./components/Todo.js";
+// import CoinTracker from "./components/CoinTracker.js";
+import Home from "./routes/Home.js";
 
 function App() {
   return (
     <div>
       {/* <Todo /> */}
       {/* <CoinTracker /> */}
-      <MovieApp />
+      <Home />
     </div>
   );
 }
