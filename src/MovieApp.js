@@ -1,16 +1,20 @@
-import {useState,useEffect} from "react";
+import { useState, useEffect } from "react";
 
-function MovieApp(){
-    const [loading, setLoading] = useState(true);
-    useEffect(() => {
-        fetch("https://yts.mx/api/v2/list_movies.json?minimum_rating=8.8&sort_by=year").then((response) => response.json()).then((json)=> console.log(json))
-    },[])
-    return (
-        <div>
-           {loading? <h1>Loading...</h1> : null}
-        </div>
-    );
-
+function MovieApp() {
+  const [loading, setLoading] = useState(true);
+  const [movies, setMovies] = useState([]);
+  useEffect(() => {
+    fetch(
+      "https://yts.mx/api/v2/list_movies.json?minimum_rating=8.8&sort_by=year"
+    )
+      .then((response) => response.json())
+      .then((json) => {
+        setMovies(json.data.movies);
+        setLoading(false);
+      });
+  }, []);
+  console.log(movies);
+  return <div>{loading ? <h1>Loading...</h1> : null}</div>;
 }
 
 export default MovieApp;
